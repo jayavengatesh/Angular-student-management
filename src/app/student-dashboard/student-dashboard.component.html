@@ -1,0 +1,90 @@
+<nav class="navbar navbar-light bg-warning">
+    <div class="container-fluid">
+        <h1 style="color:white;">Angular crud</h1>      
+        <div class="d-flex">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add Student</button> 
+        </div>
+    </div>
+</nav>
+
+
+<table class=" table mt-3" >
+    <thead>
+        <tr >
+            <th scope="col">ID</th>
+            <th scope="col">Firstname</th>
+            <th scope="col">lastname</th>
+            <th scope="col">email</th>
+            <th scope="col">mobilenumber</th>
+            <th scope="col">class</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of data">
+            <td>{{data.id}}</td>
+            <td>{{data.firstname}}</td>
+            <td>{{data.lastname}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.mobilenumber}}</td>
+            <td>{{data.class}}</td>
+            <td><button (click)="editor(data)" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" >edit</button></td>
+            <td><button class="btn btn-dark btn-sm" (click)="delete(data)">delete</button></td>
+         
+           
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            
+            <form  [formGroup]="formgroup" (ngSubmit)="clicked()"> 
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Firstname</label>
+                  <input type="text" class="form-control" id="Firstname" formControlName="firstname" >
+                </div>
+                  
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">lastname</label>
+                    <input type="text" class="form-control" id="Firstname" formControlName="lastname" >
+                  </div>
+                    
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="email" formControlName="email" >
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">MobileNumber</label>
+                    <input type="text" class="form-control" id="MobileNumber" formControlName="mobilenumber" >
+                  </div>
+                    
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">class</label>
+                    <input type="text" class="form-control" id="class"  formControlName="class">
+                  </div>
+                    
+                  <button type="button" class="btn btn-secondary mx-2" (click)="updater()" >update</button>
+                  <button type="button" class="btn btn-secondary mx-2" data-bs-dismiss="modal" >Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+
+
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
